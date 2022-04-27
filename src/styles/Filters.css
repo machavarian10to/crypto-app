@@ -1,0 +1,20 @@
+.coin-search {
+    margin: 20px;
+}
+
+.coin-search input, select{
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 16px;
+    font-weight: 600; 
+    margin: 20px;
+    padding: 12px;
+    background: #dddedf;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    max-width: 720px;
+    transition: all .5s;
+}
+
+.coin-search input:focus, select:focus{
+    background: transparent;
+}

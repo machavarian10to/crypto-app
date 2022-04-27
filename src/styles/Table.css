@@ -1,0 +1,19 @@
+.coin-table .header{
+    margin-left: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 60px;
+    border-bottom: 1px solid #d7d7d7;
+    border-top: 1px solid #d7d7d7;
+    width: 90%;
+}
+
+.coin-table .header li{
+    font-weight: 700;
+    margin-right: 3%;
+}
+
+.header div{
+    width: 85px;
+}
