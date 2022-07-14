@@ -1,13 +1,13 @@
 import '../styles/Filters.css'
 
-export default function Filters({ setSortedType, setSearch, setPriceFrom, setPriceTo }) {
+export default function Filters({ sortCoins, setSearch, setPriceFrom, setPriceTo }) {
     return (
       <div className='coin-search'> 
         <form>
-          <select onChange={e => setSortedType(e.target.value)}>
-            <option selected disabled>-- Sort coins by name --</option>
-            <option value='ascending'>ascending</option>
-            <option value='descending'>descending</option>
+          <select onChange={e => sortCoins(e.target.value)}>
+            <option disabled selected>-- Sort coins by name --</option>
+            <option value='asc'>ascending</option>
+            <option value='desc'>descending</option>
           </select>
 
           <input

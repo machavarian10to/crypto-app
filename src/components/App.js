@@ -25,14 +25,6 @@ export default function App() {
     .catch(error => console.log(error));
   }, []);
 
-  useEffect(() => {
-    const type = (sortedType === "ascending") ? -1 : 1;
-    
-    coins.sort((a, b) => type * a.name.localeCompare(b.name))
-    
-  }, [sortedType, coins]);
-
-
   function fullMarketCap() {
     let sum = 0;
     coins.forEach(coin => sum += coin.market_cap)
@@ -43,6 +35,12 @@ export default function App() {
     let sum = 0;
     coins.forEach(coin => sum += coin.total_volume)
     return sum;
+  }
+  
+  function sortCoins(type) {
+    setSortedType(type);
+    const sortedOption = (type === "asc") ? 1 : -1;
+    coins.sort((a, b) => sortedOption * a.name.localeCompare(b.name));
   }
 
   const nameFilter = coins.filter(coin => {
@@ -67,16 +65,15 @@ export default function App() {
       />
 
       <Filters 
-        setSortedType={setSortedType} 
+        sortCoins = {sortCoins}
         setSearch={setSearch} 
         setPriceFrom={setPriceFrom} 
         setPriceTo={setPriceTo}
       />
       
-      {priceFrom.length > 0 || priceTo.length > 0
+      { priceFrom.length > 0
        ? <Table filter={priceFilter} />
-       :<Table filter={nameFilter} />
-      }
+       : <Table filter={nameFilter} /> }
     </div>
   );
 }
