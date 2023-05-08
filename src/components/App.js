@@ -15,13 +15,11 @@ export default function App() {
 
   const [priceFrom, setPriceFrom] = useState(0)
 
-  const [priceTo, setPriceTo] = useState(0)
+  const [priceTo, setPriceTo] = useState(1000000)
 
   useEffect(() => {
-    axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d')
-    .then(response => { 
-      setCoins(response.data);
-    })
+    axios.get('https://cors-anywhere.herokuapp.com/https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d')
+    .then(res => setCoins(res.data))
     .catch(error => console.log(error));
   }, []);
 
@@ -49,9 +47,10 @@ export default function App() {
   });
 
   const priceFilter = coins.filter(coin => {
-      return priceFrom <= coin.current_price 
-      && priceTo >= coin.current_price;
-  }) 
+      return (coin.current_price >= priceFrom || !priceFrom) 
+      && (coin.current_price <= priceTo || !priceTo);
+  });
+  
 
 
   return (
@@ -70,10 +69,16 @@ export default function App() {
         setPriceFrom={setPriceFrom} 
         setPriceTo={setPriceTo}
       />
+
+      {
+        coins.length === 0 && 
+        <h1 style={{ margin: "50px" }}>
+          Activate CORS Header:
+          <a href='https://cors-anywhere.herokuapp.com/corsdemo' target='_blank' rel="noreferrer"> cors-anywhere</a>
+        </h1>
+      }
       
-      { priceFrom.length > 0
-       ? <Table filter={priceFilter} />
-       : <Table filter={nameFilter} /> }
+      <Table filter={priceFrom || priceTo ? priceFilter : nameFilter} />
     </div>
   );
 }

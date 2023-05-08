@@ -20,29 +20,29 @@ export default function Coin ({
         </div>
 
         <div className='coin-data'>
-          <p className='coin-price'>${price.toLocaleString()}</p>
+          <p className='coin-price'>${price?.toLocaleString()}</p>
           
           {hourlyPriceChange < 0 ? (
-            <p className='coin-percent red'>{hourlyPriceChange.toFixed(2)}%</p>
+            <p className='coin-percent red'>{hourlyPriceChange?.toFixed(2)}%</p>
           ) : (
-            <p className='coin-percent green'>{hourlyPriceChange.toFixed(2)}%</p>
+            <p className='coin-percent green'>{hourlyPriceChange?.toFixed(2)}%</p>
           )}
 
           {dailyPriceChange < 0 ? (
-            <p className='coin-percent red'>{dailyPriceChange.toFixed(2)}%</p>
+            <p className='coin-percent red'>{dailyPriceChange?.toFixed(2)}%</p>
           ) : (
-            <p className='coin-percent green'>{dailyPriceChange.toFixed(2)}%</p>
+            <p className='coin-percent green'>{dailyPriceChange?.toFixed(2)}%</p>
           )}
 
           {weeklyPriceChange < 0 ? (
-            <p className='coin-percent red'>{weeklyPriceChange.toFixed(2)}%</p>
+            <p className='coin-percent red'>{weeklyPriceChange?.toFixed(2)}%</p>
           ) : (
-            <p className='coin-percent green'>{weeklyPriceChange.toFixed(2)}%</p>
+            <p className='coin-percent green'>{weeklyPriceChange?.toFixed(2)}%</p>
           )}
 
-          <p className='coin-volume'>${volume.toLocaleString()}</p>
+          <p className='coin-volume'>${volume?.toLocaleString()}</p>
 
-          <p className='coin-marketcap'>${marketcap.toLocaleString()}</p>
+          <p className='coin-marketcap'>${marketcap?.toLocaleString()}</p>
         </div>
 
       </div>

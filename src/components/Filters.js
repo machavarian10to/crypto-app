@@ -4,11 +4,11 @@ export default function Filters({ sortCoins, setSearch, setPriceFrom, setPriceTo
     return (
       <div className='coin-search'> 
         <form>
-          <select onChange={e => sortCoins(e.target.value)}>
-            <option disabled selected>-- Sort coins by name --</option>
-            <option value='asc'>ascending</option>
-            <option value='desc'>descending</option>
-          </select>
+        <select defaultValue="-- Sort coins by name --" onChange={e => sortCoins(e.target.value)}>
+          <option disabled>-- Sort coins by name --</option>
+          <option value='asc'>ascending</option>
+          <option value='desc'>descending</option>
+        </select>
 
           <input
             type='text'
